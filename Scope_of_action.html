@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>块级作用域</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // // 场景1
+    // var timer = new Date();
+    // function fun() {
+    //   console.log(timer);
+    //   if (false) {
+    //     var timer = "hellow world";
+    //   }
+    // };
+    // fun(); // undefined
+    // // 场景2
+    // var string = "hello world!";
+
+    // for(var i = 0; i < string.length; i++) {
+    //   console.log(string[i]);
+    // };
+
+    // console.log("end:", i);
+    // 块级作用
+      // function funes5() {
+      //   var num = 100;
+      //   if (true) {
+      //     var num = 200;
+      //   };
+      //   console.log("es5", num); // 200
+      // };
+      // function funes6() {
+      //   let num = 100;
+      //   if (true) {
+      //     let num = 200;
+      //   };
+      //   console.log("es6", num); // 100
+      // };
+      // funes5();
+      // funes6();
+      // function fun() {
+      //   console.log("i am outside!")
+      // };
+      // (function() {
+      //   if (false) {
+      //      function fun() {
+      //        console.log("i am inside!")
+      //      };
+      //   };
+      //   fun();
+      // }());
+      function fun1() {
+        console.log("i am outside!")
+      };
+      {
+        if (false) {
+           function fun1() {
+             console.log("i am inside!")
+           };
+        };
+        fun1();
+      }
+  </script>
+</body>
+</html>

@@ -99,3 +99,54 @@
 ```
 
 ## 块级作用域
+
+### 为什么需要块级作用域
+
+timer在fun中进入预编译进行了变量的声明，但是还没有进行赋值，导致输出的是undefined
+
+```// 场景1
+    var timer = new Date();
+    function fun() {
+      console.log(timer);
+      if (false) {
+        var timer = "hellow world";
+      };
+    };
+    fun(); // undefined
+```
+
+i在执行后并没有在内存中释放出来，存在内存里面，导致可能出现后面如果有变量名为i的参数相互作用。
+
+```// 场景2
+  var string = "hello world!";
+  for(var i = 0; i < string.length; i++) {
+    console.log(string[i]);
+  };
+  console.log("end:", i); // 12
+```
+
+```// es5中立即执行函数，因为内部进入预编译状态，导致if内的fun覆盖了外部的fun输出"i am inside!"
+ function fun() {
+    console.log("i am outside!")
+  };
+  (function() {
+    if (false) {
+        function fun() {
+          console.log("i am inside!")
+        };
+    };
+    fun();
+  }()); //i am inside!
+  // es6中块级作用域
+  function fun1() {
+    console.log("i am outside!")
+  };
+  { // es6中立即执行函数的写法
+    if (false) {
+        function fun1() {
+          console.log("i am inside!")
+        };
+    };
+    fun1();
+  }
+```
