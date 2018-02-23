@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>let</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // // let声明变量
+    // var a = 100;
+    // let b = 200;
+    // console.log(a); // 100
+    // console.log(b); // 200
+
+    // // let是块级作用域
+    // {
+    //   var c = 10;
+    //   let d = 20;
+    // };
+    // console.log(c); // 10
+    // console.log(d); // b is not defined
+
+    // let不存在变量提升
+    // // es5的写法
+    // var e = [];
+    // for(var i = 0; i< 10; i++) {
+    //   var f = i;
+    //   e[i] = function() {
+    //     console.log(f)
+    //   }
+    // };
+    // e[5](); // 9
+    // // es6的写法
+    // var h = [];
+    // for(var i = 0; i< 10; i++) {
+    //   let j = i;
+    //   h[i] = function() {
+    //     console.log(j)
+    //   }
+    // };
+    // h[5](); // 5
+
+    // 暂时性死区
+    // {
+    //   console.log(a); // 函数未定义Uncaught ReferenceError
+    //   let a = 100;
+    //   console.log(a); // 100
+    // };
+    // var a = 200;
+    // {
+    //   console.log(a); // 200
+    //   console.log(b); // undefined
+    //   var a = 100;
+    //   var b = 50;
+    //   console.log(a); // 100
+    //   console.log(b); // 50
+    // }
+    // console.log(a); // 100
+
+    // 模块内部不允许重复声明,模块之间不影响
+    {
+      var a = 100;
+      var a = 200;
+      console.log(a); // 200
+    };
+    {
+      var b = 100;
+      let b = 200;
+      console.log(b); // Uncaught SyntaxError: Identifier 'b' has already been declared
+    };
+    {
+      let c = 100;
+      var c = 200;
+      console.log(c); // Uncaught SyntaxError: Identifier 'c' has already been declared 
+    };
+    {
+      let d = 100;
+      let d = 200;
+      console.log(d); // Uncaught SyntaxError: Identifier 'd' has already been declared
+    };
+  </script>
+</body>
+</html>
