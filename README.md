@@ -150,3 +150,87 @@ i在执行后并没有在内存中释放出来，存在内存里面，导致可�
     fun1();
   }
 ```
+
+## const
+
+const声明的是常量，常量的值一旦声明就不能改变。不可重复。
+
+```
+  const pi = 3.14159265;
+  console.log(pi); // 3.14159265
+  pi = 3;
+  console.log(pi) // Uncaught TypeError: Assignment to constant variable
+  console.log(5 * pi) // 15.70796325
+```
+
+也存在块级作用域和暂时性死区
+
+```
+  if(true) {
+    console.log(pi) // pi is not defined
+    const pi = 3.14;
+  };
+  console.log(pi); // pi is not defined
+```
+
+const对象
+
+```
+  const person = {};
+  person.name = 'zhangsan';
+  person.age = 30;
+  console.log(person.name); // zhangsan
+  console.log(person.age); // 30
+  console.log(person) //object {name: 'zhangsan', age: 30}
+```
+
+const数组
+
+```
+  const arr = [];
+  console.log(arr); // []
+  console.log(arr.length); // 0
+  console.log("----");
+  arr.push("hello world");
+  console.log(arr); // ['hello world']
+  console.log(arr.length); // 1
+  console.log("----");
+  arr[0] = 'second';
+  console.log(arr); // ['second']
+  console.log(arr.length); //1
+  console.log("----");
+  arr.length = 0;
+  console.log(arr); // []
+  console.log(arr.length); // 0
+  console.log("----");
+
+  arr = ['123']; //Assignment to constant variable.
+```
+
+const对象冻结
+
+```
+    const person = Object.freeze({});
+    person.name = "zhangsan";
+    person.age = 30;
+    console.log(person.name); // undefined
+    console.log(person.age); // undefined
+    console.log(person); // {}
+    // 使用const冻结对象
+    const person = Object.freeze({
+      name: "zhangsan",
+      age: 30
+    });
+    console.log(person.name); // zhangsan
+    console.log(person.age); // 30
+    console.log(person); // {}
+    // 彻底冻结整个对象，包括对象中的key
+    var constatize = (obj) => {
+      Object.freeze(obj);
+      Object.keys(obj).forEach((item, val) => {
+        if(typeof obj[key] === 'object') {
+          constatize(obj[key]);
+        };
+      });
+    };
+```

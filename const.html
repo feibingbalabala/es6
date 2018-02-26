@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>const</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // const声明的是常量，常量的值一旦声明就不能改变。不可重复。
+    // const pi = 3.14159265;
+    // console.log(pi); // 3.14159265
+    // pi = 3;
+    // console.log(pi) // Uncaught TypeError: Assignment to constant variable
+
+    // console.log(5 * pi) // 15.70796325
+    // 也存在块级作用域和暂时性死区
+    // if(true) {
+    //   const pi = 3.14;
+    // };
+    // console.log(pi); // pi is not defined
+
+    // const对象
+    // const person = {};
+    // person.name = 'zhangsan';
+    // person.age = 30;
+    // console.log(person.name); // zhangsan
+    // console.log(person.age); // 30
+    // console.log(person) //object {name: 'zhangsan', age: 30}
+
+    // const 数组
+    // const arr = [];
+    // console.log(arr); // []
+    // console.log(arr.length); // 0
+    // console.log("----");
+    // arr.push("hello world");
+    // console.log(arr); // ['hello world']
+    // console.log(arr.length); // 1
+    // console.log("----");
+    // arr[0] = 'second';
+    // console.log(arr); // ['second']
+    // console.log(arr.length); //1
+    // console.log("----");
+    // arr.length = 0;
+    // console.log(arr); // []
+    // console.log(arr.length); // 0
+    // console.log("----");
+    // arr = ['123']; //Assignment to constant variable.
+   
+    // // const对象冻结
+    // const person = Object.freeze({});
+    // person.name = "zhangsan";
+    // person.age = 30;
+    // console.log(person.name); // undefined
+    // console.log(person.age); // undefined
+    // console.log(person); // {}
+    // // 使用const冻结对象
+    // const person = Object.freeze({
+    //   name: "zhangsan",
+    //   age: 30
+    // });
+    // console.log(person.name); // zhangsan
+    // console.log(person.age); // 30
+    // console.log(person); // {}
+  </script>
+</body>
+</html>
