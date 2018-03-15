@@ -63,6 +63,19 @@
     // console.log(person.name); // zhangsan
     // console.log(person.age); // 30
     // console.log(person); // {}
+
+    // 全局变量属性
+    var varName = "varValue";
+    // 浏览器环境下
+    console.log(window.varName); // varValue
+    // node.js环境下
+    console.log(global.varName); // varValue
+    // 通用情况
+    console.log(this.varName); // varValue
+
+    let letName = "letValue";
+    console.log(window.letName); // undefined -- use strict
+    console.log(this.letName); // undefined -- use strict
   </script>
 </body>
 </html>

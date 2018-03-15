@@ -235,7 +235,7 @@ const对象冻结
     };
 ```
 
-##跨模块常量
+## 跨模块常量
 
 在module.js<br />
 export const intVariantName = 100;<br />
@@ -256,3 +256,20 @@ console.log(variant.charVariantName); // "variantValue"<br/>
 在onlyInt.js<br/>
 import intVariantName as variant from './module';<br/>
 console.log(variant.intVariantName); // 100
+
+## 全局对象属性
+全局对象是最顶层的对象，在浏览器环境指的是window对象，在Node.js指的是global对象。在javascript语言者，所有全局变量都是全局对象的属性。（Node的情况比较特殊，这一条只是对REPL环境适用，模块环境必须显示声明成global的属性。）<br/>
+ES6规定，var命令和function声明是全局变量，属于全局对象的属性；let命令，const命令，class命令什么的全局变量，不属于全局对象的属性。
+```
+    var varName = "varValue";
+    // 浏览器环境下
+    console.log(window.varName); // varValue
+    // node.js环境下
+    console.log(global.varName); // varValue
+    // 通用情况
+    console.log(this.varName); // varValue
+
+    let letName = "letValue";
+    console.log(window.letName); // undefined -- use strict
+    console.log(this.letName); // undefined -- use strict
+```
