@@ -234,3 +234,25 @@ const对象冻结
       });
     };
 ```
+
+##跨模块常量
+
+在module.js<br />
+export const intVariantName = 100;<br />
+export const FloatVariantName = 3.14;<br />
+export const charVariantName = "variantValue";<br/>
+
+在use.js<br />
+import * as variant from './module';<br />
+console.log(variant.intVariantName); //100<br />
+console.log(variant.FloatVariantName); //3.14<br />
+console.log(variant.charVariantName); //variantValue<br />
+
+在otherUse.js<br/>
+import {FloatVariantName, charVariantName} as variant from './module';<br/>
+console.log(variant.FloatVariantName); // 3.14<br/>
+console.log(variant.charVariantName); // "variantValue"<br/>
+
+在onlyInt.js<br/>
+import intVariantName as variant from './module';<br/>
+console.log(variant.intVariantName); // 100
