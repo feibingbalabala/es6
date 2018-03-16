@@ -273,3 +273,52 @@ ES6规定，var命令和function声明是全局变量，属于全局对象的属
     console.log(window.letName); // undefined -- use strict
     console.log(this.letName); // undefined -- use strict
 ```
+
+## 变量的解构赋值
+
+### 数组的解构赋值
+
+Destructuring<br/>
+es6允许按照一定模式，从数组和对象中提取值，对变量进行复制，这被称为解构（Destructuring）<br/>
+不完全解构<br/>
+等号左边的模式，只匹配一部分等号右边的数组。<br/>
+制定默认值<br/>
+es6中内部严格使用相等运算符(===)判断一个位置是否有值。所以如果一个数组成员不严格等于undefined,默认值是不会生效的。<br/>
+let和const命令<br/>
+只要某种结构具有iterator接口，都可以采用数组形式的解构赋值。
+
+```
+    // es5
+     var a = 1;
+     var b = 2;
+     var c = 3;
+
+     es6
+     var [a, b, c] = [1, 2, 3];
+     console.log(a); // 1
+     console.log(b); // 2
+     console.log(c); // 3
+
+    let [foo, [[bar], base]] = [1, [[2], 3]];
+    console.log(foo); // 1
+    console.log(bar); // 2
+    console.log(base); // 3
+
+    let [, ,third] = ['first', 'second', 'third'];
+    console.log(third); // third
+
+    let [one, , three] = ['one', '', 'three'];
+    console.log(one); // one
+    console.log(three); // three
+
+    let [head, ...tail] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    console.log(head); // 0;
+    console.log(tail); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    // 数组解构失败，默认undefined
+    var [temp] = [];
+    console.log(temp); //undefined
+    var [a, b] = [100];
+    console.log(a); // 100
+    console.log(b); // undefined
+```
