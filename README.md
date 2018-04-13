@@ -285,7 +285,9 @@ es6允许按照一定模式，从数组和对象中提取值，对变量进行�
 制定默认值<br/>
 es6中内部严格使用相等运算符(===)判断一个位置是否有值。所以如果一个数组成员不严格等于undefined,默认值是不会生效的。<br/>
 let和const命令<br/>
-只要某种结构具有iterator接口，都可以采用数组形式的解构赋值。
+只要某种结构具有iterator接口，都可以采用数组形式的解构赋值。<br/>
+
+Destructuring
 
 ```
     // es5
@@ -321,4 +323,48 @@ let和const命令<br/>
     var [a, b] = [100];
     console.log(a); // 100
     console.log(b); // undefined
+
+    // 不完全解构
+
+    let [x, y] = [1, 2, 3];
+    console.log(x) // 1
+    console.log(y) // 2
+
+    let [a, [b], c] = [1, [2, 3], 4]
+    console.log(a); // 1
+    console.log(b); // 2
+    console.log(c); // 4
+
+    // 指定默认值
+
+    var [temp = 'string'] = [];
+    console.log(temp); // string
+
+    var [temp = 'string'] = ['tempString'];
+    console.log(temp) // tempString
+
+    var [x = 'aaa', y] = ['bbb'];
+    console.log(x) // bbb
+    console.log(y) // undefined
+
+    var [m, n = 'aaa'] = ["bbb"];
+    console.log(m); // bbb;
+    console.log(n); // aaa
+
+    var [p, q = "aaa"] = ["bbb", undefined];
+    console.log(p); // bbb
+    console.log(q); // aaa 不会被undefined所覆盖，因为有默认值，所以不会被默认值覆盖
+
+    // 非遍历解构，会直接报错
+    
+    var [temp] = 1;
+    console.log(temp) // 1 is not iterable
+    var [temp] = false;
+    console.log(temp) //  false is not iterable
+    var [temp] = undefined;
+    console.log(temp) // undefined is not iterable
+    var [temp] = NaN;
+    console.log(temp) // NaN is not iterable
+    var [temp] = null;
+    console.log(temp) // null is not iterable
 ```
