@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>对象的解构赋值</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var {name, age, id} = {id: '001', name: 'jwy', age: 26};
+  console.log(name); // jwy
+  console.log(age); // 26
+  console.log(id); // 001
+
+  var {name: person_name, age: person_age} = {id: '001', name: 'jwy', age: 26};
+  console.log(person_name); // jwy
+  console.log(person_age); // 26
+
+  let object = {first: 'hello', last: 'world'};
+  let {first: first_name, last: last_name} = object
+  console.log(first_name, last_name) // hello world
+
+  // 指定默认值
+  // 默认值的生效条件，对象的属性严格等于Undefined
+
+  var {x = 3} = {};
+  console.log(x); // 3
+
+  var {x, y = 5} = {x: 1}
+  console.log(x); // 1
+  console.log(y);  // 5
+
+  var {message: msg = 'I am superman'} = {};
+  console.log(msg); // I am superman
+  // console.log(message); // message is not defined
+
+  var {x = 3} = {x: undefined};
+  console.log(x) // 3
+  var {y = 5} = {y: null};
+  console.log(y) // null
+
+  // 已声明的变量用于解构赋值
+  var s;
+  // {s} = {s: 1}; Unexpected token =
+  ({s} = {s: 1})
+  console.log(s) // 1
+
+  // 现有对象的方法
+
+  console.log(Math.sin(Math.PI / 6)); // 0.49999999999999994
+
+  let {sin, cos, tan, PI} = Math;
+  // 这个PI要注意大小写
+  console.log(sin(PI/6)) // 0.49999999999999994
+</script>
+</html>
