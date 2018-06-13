@@ -505,3 +505,61 @@ yield*_yield*后面跟的是一个可遍历的结构，它会调用该结构的�
   // 这个PI要注意大小写
   console.log(sin(PI/6)) // 0.49999999999999994
 ```
+
+### 字符串的解构赋值
+
+字符串也可以解构赋值，字符串被转换成了一个类似数组的对象
+
+``` js
+  const [a, b, c, d, e] = 'hello';
+  console.log(a); // h
+  console.log(b); // e
+  console.log(c); // l
+  console.log(d); // l
+  console.log(e); // o
+```
+
+字符串的属性解构，类似数组的对象都有一个length属性，因此还可以对这个属性解构赋值。
+
+``` js
+  const {length: len} = 'hello';
+  console.log(len); // 5
+  const {length} = 'hello world!';
+  console.log(length) // 12
+```
+
+### 函数的解构赋值
+
+函数参数的解构赋值
+
+``` js
+  function sum ([x, y]) {
+    return x + y;
+  };
+  
+  console.log(sum([1, 2])); // 3
+```
+
+函数参数的解构赋值也可以使用默认值
+
+``` js
+  function fun ({x = 0, y = 0} = {}) {
+    return [x, y]
+  };
+  console.log(fun({x: 100, y: 200})); // [100, 200]
+  console.log(fun({x: 100})) // [100, 0]
+  console.log(fun({})); // [0, 0]
+  console.log(fun()); // [0, 0]
+```
+
+函数并不是在()中做了一个解构赋值，所以会出现undefined
+
+``` js
+  function no ({x, y} = {x: 0, y: 0}) {
+    return [x, y]
+  }
+  console.log(no({x: 100, y: 200})); // [100, 200]
+  console.log(no({x: 100})) // [100, undefined]
+  console.log(no({})); // [undefined, undefined]
+  console.log(no()); // [0, 0]
+```
