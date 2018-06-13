@@ -563,3 +563,59 @@ yield*_yield*后面跟的是一个可遍历的结构，它会调用该结构的�
   console.log(no({})); // [undefined, undefined]
   console.log(no()); // [0, 0]
 ```
+
+### 解构赋值的运用
+
+交换变量的值
+
+``` js
+  // ES5的交换变量
+  var a = 100;
+  var b = 200;
+  console.log(a, b); // 100 200
+  var temp = '';
+  temp = a;
+  a = b;
+  b = temp;
+  console.log(a, b); // 200 100
+
+  // ES6
+  var x = 100;
+  var y = 200;
+  console.log(x, y); // 100 200
+  [x, y] = [y, x];
+  console.log(x, y); // 200 100
+```
+
+函数返回多个值
+
+``` js
+  // 返回一个数组
+  function retrunArr () {
+    return [1, 2, 3];
+  }
+  console.log(retrunArr()) // [1, 2, 3]
+
+  var [x, y, z] = retrunArr();
+  console.log(x); // 1
+  console.log(y); // 2
+  console.log(z); // 3
+
+  // 返回一个对象
+  function retrunObj () {
+    return {
+      id: '001',
+      name: 'jwy',
+      age: 18
+    }
+  };
+  var {id, name, age} = retrunObj();
+  console.log(id); // 001
+  console.log(name); // jwy
+  console.log(age); // 18
+
+  var {id: person_id, name: person_name, age: person_age} = retrunObj()
+  console.log(person_id); // 001
+  console.log(person_name); // jwy
+  console.log(person_age); // 18
+```
