@@ -619,3 +619,50 @@ yield*_yield*后面跟的是一个可遍历的结构，它会调用该结构的�
   console.log(person_name); // jwy
   console.log(person_age); // 18
 ```
+
+函数参数的定义
+
+``` js
+  // 1、参数是一种有次序的值
+  function arrFun([x, y, z]) {
+    console.log(x, y, z);
+  };
+  arrFun([100, 200, 300]); // 100, 200, 300
+  // 2、参数是一组无次序的值
+  function fun ({id, name, age}) {
+    console.log(id, name, age)
+  };
+  fun({id: '001', name: 'jwy', age: 18}) // 001 jwy 18
+```
+
+提取json数据
+
+``` js
+  var jsonData = {
+    id: '001',
+    name: 'jwy',
+    sex: 'man',
+    age: 18,
+    classes: {
+      computer: 98,
+      englist: 100
+    },
+    arr: [1, 2]
+  };
+  // es5
+  console.log(jsonData.id); // 001
+  console.log(jsonData.name); // jwy
+  console.log(jsonData.sex); // man
+  console.log(jsonData.age); // 18
+  console.log(jsonData.classes.computer); // 98
+  console.log(jsonData.classes.englist); // 100
+  console.log(jsonData.arr[0]); // 1
+  console.log(jsonData.arr[1]); // 2
+  // es6
+  let {id: number, name, age, classes: {computer}, arr: [x]} = jsonData;
+  console.log(number); // 001
+  console.log(name); // jwy
+  console.log(age); // 18
+  console.log(computer); // 98
+  console.log(x); // 1
+```
