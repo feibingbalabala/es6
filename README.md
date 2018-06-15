@@ -666,3 +666,27 @@ yield*_yield*后面跟的是一个可遍历的结构，它会调用该结构的�
   console.log(computer); // 98
   console.log(x); // 1
 ```
+
+遍历map结构
+
+``` js
+  var map = new Map();
+  map.set('id', '001');
+  map.set('name', 'jwy');
+  console.log(map) // {"id" => "001", "name" => "jwy"}
+  for (let [key, value] of map) {
+    console.log(key, value) // id 001
+                            // name jwy
+  };
+  // 获取map的值
+  for (let [, value] of map) {
+    console.log(value); // 001
+                        // jwy
+  }
+```
+
+输入模块的指定方法
+
+``` js
+import {func1, func2} from 'func.js'
+```
